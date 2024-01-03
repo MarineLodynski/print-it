@@ -1,3 +1,27 @@
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+	const arrowL = document.querySelector('#banner .arrow_left');
+	arrowL.addEventListener('click', function(event) {
+	  console.log("Vous avez cliqué sur la flèche gauche !");
+	});
+
+	const arrowR = document.querySelector('#banner .arrow_right');
+	arrowR.addEventListener('click', function(event) {
+	  console.log("Vous avez cliqué sur la flèche droite !");
+	});
+
+   });
+
+
+
+
+
+
+
+
+
 const slides = [
 	{
 		"image":"slide1.jpg",
