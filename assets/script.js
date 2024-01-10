@@ -18,7 +18,7 @@ const slides = [
 	}
 ]
 
-console.log(slides);
+//console.log(slides);
 
 
 
@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const arrowL = document.querySelector('#banner .arrow_left');
 	arrowL.addEventListener('click', function(event) {
 	  console.log("Vous avez cliqué sur la flèche gauche !");
-	  console.log(slides[0])
-	  console.log(slides[0].image)
+	  
 	});
 
 	const arrowR = document.querySelector('#banner .arrow_right');
@@ -54,6 +53,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	displayDots();
 
+	// Changement image et intégration texte HTML
+	const imageElement = document.querySelector('.banner-img');
+	const content = document.querySelector ('p');
+
+	//Tout doit être modifié pendant chaque clic 
+	imageElement.src='./assets/images/slideshow/' + slides[index].image;
+    content.innerHTML = "tagLine";
+	
 });
 
 
