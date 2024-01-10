@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  console.log("Vous avez cliqué sur la flèche droite !");
 	  console.log(slides[1])
 	  console.log(slides[1].image)
+	  
 	});
 
 	//Affichage des dots
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	//Tout doit être modifié pendant chaque clic 
 	imageElement.src='./assets/images/slideshow/' + slides[index].image;
-    content.innerHTML = "tagLine";
+    content.innerHTML = slides[index].tagLine;
 	
 });
 
