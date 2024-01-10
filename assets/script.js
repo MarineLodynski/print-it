@@ -24,18 +24,22 @@ const slides = [
 
 document.addEventListener('DOMContentLoaded', function() {
 	//EventListeners des deux flèches
-	const arrowL = document.querySelector('#banner .arrow_left');
+	const arrowL = document.querySelector('.arrow_left');
 	arrowL.addEventListener('click', function(event) {
 	  console.log("Vous avez cliqué sur la flèche gauche !");
-	  
+	  Updateimage('left');
+	  UpdateDots();
+
 	});
 
-	const arrowR = document.querySelector('#banner .arrow_right');
+	const arrowR = document.querySelector('.arrow_right');
 	arrowR.addEventListener('click', function(event) {
 	  console.log("Vous avez cliqué sur la flèche droite !");
 	  console.log(slides[1])
 	  console.log(slides[1].image)
-	  
+	  Updateimage('right');
+	  UpdateDots();
+
 	});
 
 	//Affichage des dots
@@ -53,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 	displayDots();
+	
 
 	// Changement image et intégration texte HTML
 	const imageElement = document.querySelector('.banner-img');
@@ -62,6 +67,41 @@ document.addEventListener('DOMContentLoaded', function() {
 	imageElement.src='./assets/images/slideshow/' + slides[index].image;
     content.innerHTML = slides[index].tagLine;
 	
+	function Updateimage(button) {
+		console.log(button)
+		if (button == 'right') {
+			console.log("coucou")
+			if (index < slides.length - 1) {
+				index++
+			} else {
+				index = 0
+			}
+		} else if (button == 'left') {
+			console.log("hello")
+			if (index < slides.length - 1) {
+				index--
+			} else {
+				index = 0
+			}
+		}
+		
+		imageElement.src='./assets/images/slideshow/' + slides[index].image;
+    	content.innerHTML = slides[index].tagLine;
+		displayDots();
+	}
+
+	function UpdateDots () {
+		for (let i =0; i > slides.length; i--) {
+			const dot = document.createElement("span")
+			dot.classList.remove("dot");
+			dots.appendChild(dot)
+			if (i == index) {
+				dot.classList.remove("dot_selected");
+			}
+		}
+	}
+	UpdateDots();
+
 });
 
 
