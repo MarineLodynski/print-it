@@ -19,9 +19,38 @@ const slides = [
 ]
 
 //console.log(slides);
+const dots = document.querySelector('.dots');
+let dot = document.querySelectorAll ('.dot')
+
+let index = 0
+//const dot = dot.classList.add('dot');
 
 
+//console.log(dots)
+//function displayDots () {
+		for (let i =0; i < slides.length; i++) {
+			const newdot = document.createElement("div")
+			newdot.className="dot";
+			dots.appendChild(newdot)
+			UpdateDots()
+		}
+//}
+//displayDots();
 
+function UpdateDots () {
+	for (let i =0; i < slides.length -1 ; i++) {
+		
+		if (i == index) {
+			dots[i].classList.add("dot_selected");
+		} else {
+			dots[i].classList.remove("dot");
+		}
+
+	}
+}
+//UpdateDots();
+
+	
 document.addEventListener('DOMContentLoaded', function() {
 	//EventListeners des deux flèches
 	const arrowL = document.querySelector('.arrow_left');
@@ -29,34 +58,22 @@ document.addEventListener('DOMContentLoaded', function() {
 	  console.log("Vous avez cliqué sur la flèche gauche !");
 	  Updateimage('left');
 	  UpdateDots();
+	 
 
 	});
 
 	const arrowR = document.querySelector('.arrow_right');
 	arrowR.addEventListener('click', function(event) {
 	  console.log("Vous avez cliqué sur la flèche droite !");
-	  console.log(slides[1])
-	  console.log(slides[1].image)
 	  Updateimage('right');
 	  UpdateDots();
+	  
 
 	});
 
+
 	//Affichage des dots
-	const dots = document.querySelector('.dots');
-	let index = 0
-	//console.log(dots)
-	function displayDots () {
-		for (let i =0; i < slides.length; i++) {
-			const dot = document.createElement("span")
-			dot.classList.add("dot");
-			dots.appendChild(dot)
-			if (i == index) {
-				dot.classList.add("dot_selected");
-			}
-		}
-	}
-	displayDots();
+	
 	
 
 	// Changement image et intégration texte HTML
@@ -72,35 +89,28 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (button == 'right') {
 			console.log("coucou")
 			if (index < slides.length - 1) {
-				index++
+				index++;
 			} else {
-				index = 0
+				index = 0;
 			}
 		} else if (button == 'left') {
 			console.log("hello")
-			if (index < slides.length - 1) {
-				index--
+			if (index > 0) {
+				index--;
 			} else {
-				index = 0
+				index =  slides.length -1;
 			}
 		}
 		
 		imageElement.src='./assets/images/slideshow/' + slides[index].image;
     	content.innerHTML = slides[index].tagLine;
-		displayDots();
+		UpdateDots();
 	}
 
-	function UpdateDots () {
-		for (let i =0; i > slides.length; i--) {
-			const dot = document.createElement("span")
-			dot.classList.remove("dot");
-			dots.appendChild(dot)
-			if (i == index) {
-				dot.classList.remove("dot_selected");
-			}
-		}
-	}
-	UpdateDots();
+	//Points supprimés
+	
+	
+
 
 });
 
