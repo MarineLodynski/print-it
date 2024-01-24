@@ -18,39 +18,53 @@ const slides = [
 	}
 ]
 
-//console.log(slides);
+
 const dots = document.querySelector('.dots');
-let dot = document.querySelectorAll ('.dot')
-
-let index = 0
-//const dot = dot.classList.add('dot');
+let index = 0;
 
 
-//console.log(dots)
+//Affichage des dots
 //function displayDots () {
-		for (let i =0; i < slides.length; i++) {
-			const newdot = document.createElement("div")
-			newdot.className="dot";
-			dots.appendChild(newdot)
-			UpdateDots()
-		}
+		//for (let i =0; i < slides.length; i++) {
+			//const newdot = document.createElement("span")
+			//newdot.className="dot";
+			//dots.appendChild(dot)
+			//let dot = document.querySelectorAll('.dot');
+		//}
 //}
 //displayDots();
 
+//function UpdateDots () {
+	//for (let i =0; i < slides.length ; i++) {
+		
+		//if (i == index) {
+			//dot[0].classList.add("dot_selected");
+		//} else {
+			//dot[i].classList.remove("dot_selected");
+		//}
+
+	//}
+//}
+//UpdateDots();
+
 function UpdateDots () {
-	for (let i =0; i < slides.length -1 ; i++) {
+	for (let i =0; i < slides.length ; i++) {
+		const dots = document.createElement("span");
+		const dot = document.querySelectorAll('.dot');
+		dot.className.add("dot");
+		dots.appendChild(dot);
 		
 		if (i == index) {
-			dots[i].classList.add("dot_selected");
+			dot[0].classList.add(".dot_selected");
 		} else {
-			dots[i].classList.remove("dot");
+			dot[0].classList.remove(".dot_selected");
 		}
 
 	}
 }
 //UpdateDots();
 
-	
+
 document.addEventListener('DOMContentLoaded', function() {
 	//EventListeners des deux flèches
 	const arrowL = document.querySelector('.arrow_left');
@@ -58,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	  console.log("Vous avez cliqué sur la flèche gauche !");
 	  Updateimage('left');
 	  UpdateDots();
-	 
-
+	  
+	  
 	});
 
 	const arrowR = document.querySelector('.arrow_right');
@@ -68,21 +82,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	  Updateimage('right');
 	  UpdateDots();
 	  
-
 	});
 
 
-	//Affichage des dots
-	
-	
-
 	// Changement image et intégration texte HTML
 	const imageElement = document.querySelector('.banner-img');
-	const content = document.querySelector ('p');
+	const content = document.querySelector('#banner p');
 
 	//Tout doit être modifié pendant chaque clic 
 	imageElement.src='./assets/images/slideshow/' + slides[index].image;
-    content.innerHTML = slides[index].tagLine;
+	content.innerHTML = slides[index].tagLine;
 	
 	function Updateimage(button) {
 		console.log(button)
@@ -91,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (index < slides.length - 1) {
 				index++;
 			} else {
-				index = 0;
+			index = 0;
 			}
 		} else if (button == 'left') {
 			console.log("hello")
@@ -104,15 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		imageElement.src='./assets/images/slideshow/' + slides[index].image;
     	content.innerHTML = slides[index].tagLine;
-		UpdateDots();
+		//UpdateDots();
 	}
-
-	//Points supprimés
-	
-	
-
-
 });
-
-
 
