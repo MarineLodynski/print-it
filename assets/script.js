@@ -18,80 +18,47 @@ const slides = [
 	}
 ]
 
-
 const dots = document.querySelector('.dots');
 let index = 0;
-let dot = document.querySelectorAll('.dot');
-//let dot_selected = document.querySelector('.dot_selected');
-//ça ne fonctionne pas...
-//dot_selected.className="dot_selected";
 
 //Affichage des dots
-//function displayDots () {
+//Boucle for : création bullet points avec instructions
 for (let i =0; i < slides.length; i++) {
 	const newdot = document.createElement("span");
-	
 	newdot.className="dot";
 	dots.appendChild(newdot);
-	
 }
-//}
-//displayDots();
 
+// Récupération et appel des bullet points
+let dot = document.querySelectorAll('.dot');
+dot[0].classList.add('dot_selected');
+
+// Cocher / décocher les bullet points
 function UpdateDots () {
 	for (let i =0; i < slides.length; i++) {
-		//if (i == index) {
-			//dot[0].classList.add("dot_selected");
-		//} else {
-			//dot[i].classList.remove("dot_selected");
-			
-		//}
 		if (i == index) {
-			dot.classList.remove("dot_selected");
+			dot[i].classList.add("dot_selected");
+		} else {
+			dot[i].classList.remove("dot_selected");
+			
 		}
 	}
 }
-//UpdateDots();
-
-//function UpdateDots () {
-	//for (let i =0; i < slides.length ; i++) {
-		//const dots = document.createElement("span");
-		//let dot = document.querySelectorAll('.dot');
-		//document.createElement('dot');
-		//dot.className("dot");
-		//dots.appendChild(dot);
-		
-		//if (i == index) {
-			//dot[0].classList.add(".dot_selected");
-		//} else {
-			//dot[0].classList.remove(".dot_selected");
-		//}
-
-	//}
-//}
-//UpdateDots();
-
 
 document.addEventListener('DOMContentLoaded', function() {
 	// Changement image et intégration texte HTML
 	const imageElement = document.querySelector('.banner-img');
 	const content = document.querySelector('#banner p');
 
-	//Tout doit être modifié pendant chaque clic 
-	//imageElement.src='./assets/images/slideshow/' + slides[index].image;
-	//content.innerHTML = slides[index].tagLine;
-	
+	//Fonction slides et boutons
 	function Updateimage(button) {
-		console.log(button)
 		if (button == 'right') {
-			console.log("coucou")
 			if (index < slides.length - 1) {
 				index++;
 			} else {
 			index = 0;
 			}
 		} else if (button == 'left') {
-			console.log("hello")
 			if (index > 0) {
 				index--;
 			} else {
