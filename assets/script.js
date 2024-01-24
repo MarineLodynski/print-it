@@ -21,77 +21,65 @@ const slides = [
 
 const dots = document.querySelector('.dots');
 let index = 0;
-
+let dot = document.querySelectorAll('.dot');
+//let dot_selected = document.querySelector('.dot_selected');
+//ça ne fonctionne pas...
+//dot_selected.className="dot_selected";
 
 //Affichage des dots
 //function displayDots () {
-		//for (let i =0; i < slides.length; i++) {
-			//const newdot = document.createElement("span")
-			//newdot.className="dot";
-			//dots.appendChild(dot)
-			//let dot = document.querySelectorAll('.dot');
-		//}
+for (let i =0; i < slides.length; i++) {
+	const newdot = document.createElement("span");
+	
+	newdot.className="dot";
+	dots.appendChild(newdot);
+	
+}
 //}
 //displayDots();
 
-//function UpdateDots () {
-	//for (let i =0; i < slides.length ; i++) {
-		
+function UpdateDots () {
+	for (let i =0; i < slides.length; i++) {
 		//if (i == index) {
 			//dot[0].classList.add("dot_selected");
 		//} else {
 			//dot[i].classList.remove("dot_selected");
+			
+		//}
+		if (i == index) {
+			dot.classList.remove("dot_selected");
+		}
+	}
+}
+//UpdateDots();
+
+//function UpdateDots () {
+	//for (let i =0; i < slides.length ; i++) {
+		//const dots = document.createElement("span");
+		//let dot = document.querySelectorAll('.dot');
+		//document.createElement('dot');
+		//dot.className("dot");
+		//dots.appendChild(dot);
+		
+		//if (i == index) {
+			//dot[0].classList.add(".dot_selected");
+		//} else {
+			//dot[0].classList.remove(".dot_selected");
 		//}
 
 	//}
 //}
 //UpdateDots();
 
-function UpdateDots () {
-	for (let i =0; i < slides.length ; i++) {
-		const dots = document.createElement("span");
-		const dot = document.querySelectorAll('.dot');
-		dot.className.add("dot");
-		dots.appendChild(dot);
-		
-		if (i == index) {
-			dot[0].classList.add(".dot_selected");
-		} else {
-			dot[0].classList.remove(".dot_selected");
-		}
-
-	}
-}
-//UpdateDots();
-
 
 document.addEventListener('DOMContentLoaded', function() {
-	//EventListeners des deux flèches
-	const arrowL = document.querySelector('.arrow_left');
-	arrowL.addEventListener('click', function(event) {
-	  console.log("Vous avez cliqué sur la flèche gauche !");
-	  Updateimage('left');
-	  UpdateDots();
-	  
-	  
-	});
-
-	const arrowR = document.querySelector('.arrow_right');
-	arrowR.addEventListener('click', function(event) {
-	  console.log("Vous avez cliqué sur la flèche droite !");
-	  Updateimage('right');
-	  UpdateDots();
-	  
-	});
-
-
 	// Changement image et intégration texte HTML
 	const imageElement = document.querySelector('.banner-img');
 	const content = document.querySelector('#banner p');
 
 	//Tout doit être modifié pendant chaque clic 
-	imageElement.src='./assets/images/slideshow/' + slides[index].image;
-	content.innerHTML = slides[index].tagLine;
+	//imageElement.src='./assets/images/slideshow/' + slides[index].image;
+	//content.innerHTML = slides[index].tagLine;
 	
 	function Updateimage(button) {
 		console.log(button)
@@ -113,7 +101,27 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		imageElement.src='./assets/images/slideshow/' + slides[index].image;
     	content.innerHTML = slides[index].tagLine;
-		//UpdateDots();
+		UpdateDots();
 	}
+	
+	//EventListeners des deux flèches
+	const arrowL = document.querySelector('.arrow_left');
+	arrowL.addEventListener('click', function(event_left) {
+	  console.log("Vous avez cliqué sur la flèche gauche !");
+	  Updateimage('left');
+	  UpdateDots();
+	  
+	  
+	});
+
+	const arrowR = document.querySelector('.arrow_right');
+	arrowR.addEventListener('click', function(event_right) {
+	  console.log("Vous avez cliqué sur la flèche droite !");
+	  Updateimage('right');
+	  UpdateDots();
+	  
+	});
+
+	
 });
 
